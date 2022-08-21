@@ -1,11 +1,12 @@
 import { RouteRecordRaw } from 'vue-router';
 import HomePage from '../view/Home/index.vue';
 import NotFoundPage from '../view/NotFound/index.vue';
+import SearchPage from '../view/Search/index.vue'
 
 export const PublicRoutes: Array<RouteRecordRaw> = [
     {
         path: '/',
-        name: 'home',
+        name: 'HomePage',
         component: HomePage
     },
     {
@@ -13,9 +14,9 @@ export const PublicRoutes: Array<RouteRecordRaw> = [
         name: 'NotFoundPage',
         component: NotFoundPage,
     },
-    // {
-    //     path: '/search',
-    //     name: 'Search',
-    //     component: SearchPage,
-    // }
+    {
+        path: '/search',
+        name: 'SearchPage',
+        component: SearchPage,
+    }
 ];
