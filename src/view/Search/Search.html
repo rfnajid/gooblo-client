@@ -1,20 +1,20 @@
 
 
-<SearchHeader />
+<SearchHeader :query="query" :onSubmit="onSubmit"/>
 
 <div class="ml-48">
 
-    <!-- <Loading class="my-10"/> -->
+    <Loading class="my-10" v-if="isLoading"/>
 
-    <!-- <NotFound/> -->
+    <NotFound v-if="!isLoading && searchResult.length === 0"/>
     
-    <ul>
-        <li v-for="i in 10" class="my-5">
+    <ul v-if="!isLoading && searchResult.length > 0">
+        <li v-for="item in searchResult" :key="item.id" class="my-5">
             <ResultItem
-                title="Judulnya Agak panjangan dikit gapapa"
-                url="https://google.com"
-                date="2020-07-03"
-                description="Lorem ipsum itu bahasa latin, tapi aku sendiri gak tau artinya apa, gak tau juga siapa yang bekenin bisa-bisanya jadi standar perdisainan"/>
+                :title="item.title"
+                :url="item.url"
+                :date="item.date"
+                :description="item.description"/>
         </li>
     </ul>
 </div>
