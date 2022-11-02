@@ -3,6 +3,7 @@ import { slice } from "../../utils/string";
 
 const MAX_TITLE_LENGTH = 60;
 const MAX_DESC_LENGTH = 200;
+const MAX_PATH_LENGTH = 10;
 
 export default defineComponent({
     props : {
@@ -15,7 +16,12 @@ export default defineComponent({
 
         const url = new URL(props.url || '');
         const host = url.protocol+'//'+url.host+url.port;
-        const path = url.pathname.split('/').filter(item => item && Number.isNaN(item));
+        const path = url.pathname.split('/')
+            .filter(item => item)
+            .map(item => {
+                item = item.trim();
+                return item.length > MAX_PATH_LENGTH ? '...' : item;
+            });
         path.pop();
 
         const breadcrumbs: string[] = [host, ...path];
