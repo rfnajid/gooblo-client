@@ -1,5 +1,13 @@
 <div class="max-w-2xl">
-    <a class="font-bold text-blue-500 visited:text-purple-600 hover:underline" :href="url">{{title}}</a>
+    <div>
+        <template v-for="(item, index) in breadcrumbs">
+            <span class="mr-1 text-gray-500" v-if="index != 0">›</span>
+            <span class="mr-1" :class="'text-gray-'+ (index == 0 ? '900' : '500')">
+                {{item}}
+            </span>
+        </template>
+    </div>
+    <a class="my-1 font-bold text-blue-500 visited:text-purple-600 hover:underline" :href="url">{{title}}</a>
     <p class="text-gray-900">
         <span class="text-gray-400">{{date? date + ' — ': ''}}</span>
         {{description}}

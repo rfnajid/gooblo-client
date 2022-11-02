@@ -7,8 +7,8 @@ export const search = async (query: string): Promise<SearchResult[]> => {
     .select()
     .or(`title.ilike.%${query}%`)
     .or(`description.ilike.%${query}%`)
-    .or(`keyword.ilike.%${query}%`)
-    .limit(10);
+    .or(`keywords.ilike.%${query}%`)
+    .limit(20);
     
     return data || [];
 }

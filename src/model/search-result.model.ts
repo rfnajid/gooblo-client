@@ -5,7 +5,7 @@ export type SearchResult = {
     updated_at: string,
     title: string,
     description: string,
-    keyword: string,
+    keywordss: string,
     content?: string,
     pub_at?: string
 }
