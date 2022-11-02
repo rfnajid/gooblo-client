@@ -1,20 +1,22 @@
+<div class="overflow-hidden">
 
-
-<SearchHeader :query="query" :onSubmit="onSubmit"/>
-
-<div class="ml-48">
-
-    <Loading class="my-10" v-if="isLoading"/>
-
-    <NotFound v-if="!isLoading && searchResult.length === 0"/>
+    <SearchHeader :query="query" :onSubmit="onSubmit"/>
     
-    <ul v-if="!isLoading && searchResult.length > 0">
-        <li v-for="item in searchResult" :key="item.id" class="my-5">
-            <ResultItem
+    <div class="px-5 md:ml-48">
+            
+        <Loading class="my-10" v-if="isLoading"/>
+        
+        <NotFound v-if="!isLoading && searchResult.length === 0"/>
+        
+        <ul v-if="!isLoading && searchResult.length > 0">
+            <li v-for="item in searchResult" :key="item.id" class="my-5">
+                <ResultItem
                 :title="item.title"
                 :url="item.url"
-                :date="item.date"
-                :description="item.description"/>
-        </li>
-    </ul>
+                    :date="item.date"
+                    :description="item.description"/>
+                </li>
+        </ul>
+    </div>
+    
 </div>

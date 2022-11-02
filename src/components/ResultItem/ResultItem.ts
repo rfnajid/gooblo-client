@@ -15,7 +15,7 @@ export default defineComponent({
 
         const url = new URL(props.url || '');
         const host = url.protocol+'//'+url.host+url.port;
-        const path = url.pathname.split('/').filter(item => item);
+        const path = url.pathname.split('/').filter(item => item && Number.isNaN(item));
         path.pop();
 
         const breadcrumbs: string[] = [host, ...path];
